@@ -11,8 +11,11 @@ Rails.application.routes.draw do
   root "home#index"
 
 # log out won't work without this
-devise_scope :user do  
-  get '/users/sign_out' => 'devise/sessions#destroy'     
-end
+  devise_scope :user do  
+    get '/users/sign_out' => 'devise/sessions#destroy'     
+  end
+
+  resources :users, only: [:index, :show]
+
 
 end

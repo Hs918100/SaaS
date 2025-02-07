@@ -1,0 +1,40 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top bg-light navbar-light">
+  <div class="container">
+    <% if user_signed_in? %>
+        <a class="navbar-brand" href="#">Profile Image
+        </a>
+        <button class="navbar-toggler" type="button" data-mdb-collapse-init data-mdb-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item ms-3">
+                <%= link_to "Edit Account", edit_user_registration_path %>            </li>
+            <li class="nav-item ms-3">
+                <%= link_to "LogOut", destroy_user_session_path, method: :delete %>
+            </li>
+        </ul>
+        </div>
+    <% else %>
+        <div class="navbar-brand">
+          <%= link_to "Welcome to SaaS", root_path %>
+        </div>
+        <button class="navbar-toggler" type="button" data-mdb-collapse-init data-mdb-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item ms-3">
+                <%= link_to "Create New Account", new_user_registration_path %>            </li>
+            <li class="nav-item ms-3">
+                <%= link_to "Log In", new_user_session_path %>
+            </li>
+        </ul>
+        </div>
+    <% end %>
+  </div>
+</nav>
+<!-- Navbar -->

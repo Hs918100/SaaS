@@ -1,0 +1,15 @@
+<div class="card align-center" style="width: 18rem;" >
+  
+  <div class="card-body">
+    <p class="card-text">User Id: <%= @user.id %></p>
+    <h5 class="card-title"><%= @user.email %></h5>
+    <p class="card-text">user bio</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Joined At <%= @user.created_at.strftime("%B %d, %Y") %></li>
+  </ul>
+  <div class="card-body">
+    <a href="#" class="card-link">Edit User</a>
+    <%= link_to "Back", :back, class: "btn btn-light align-right" %>
+  </div>
+</div>
