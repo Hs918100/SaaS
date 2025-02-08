@@ -6,6 +6,7 @@
       <th scope="col" class="text-secondary">id</th>
       <th scope="col" class="text-secondary">Name</th>
       <th scope="col" class="text-secondary">Email</th>
+      <th scope="col" class="text-secondary">Tenants</th>
       <th scope="col" class="text-secondary">Joined Date</th>
     </tr>
   </thead>
@@ -16,6 +17,7 @@
                     <th scope="row"> <%= link_to user.id, user %></th>
                     <td><%= nil %></td>
                     <td><%= user.email %></td>
+                    <td><%= user.tenants.compact.join(', ') %></td>
                     <td><%= user.created_at.strftime("%B %d, %Y")  %></td>
                 </tr>
             <% end %>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :members
+  resources :tenants
   devise_for :users
   get 'home/index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -17,5 +19,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show]
 
+  resources :tenants, only: [:index, :show, :create, :new, :update, :edit, :destroy]
+  get 'my/tenants', to: 'tenants#my', as: 'my_tenants' 
+
+  resources :members
 
 end

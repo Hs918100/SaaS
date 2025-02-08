@@ -1,0 +1,32 @@
+<p style="color: green"><%= notice %></p>
+
+<h2 class="mt-2 text-center" style="color: #0384fc;"> Available Tenants </h2>
+<%= link_to "New tenant", new_tenant_path %>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col" class="text-secondary">id</th>
+      <th scope="col" class="text-secondary">Name</th>
+      <th scope="col" class="text-secondary">Joined Date</th>
+      <th scope="col" class="text-secondary">Users</th>
+      <th scope="col" class="text-secondary">Actions</th>
+    </tr>
+  </thead>
+  <% if @tenants %>
+        <tbody>
+            <% @tenants.each do |tenant| %>
+                <tr>
+                    <th scope="row"> <%= link_to tenant.id, tenant %></th>
+                    <td><%= tenant.name %></td>
+                    <td><%= tenant.created_at.strftime("%B %d, %Y")  %></td>
+                    <td><%= tenant.users.compact.join(', ') %></td>
+                    <td>
+                      <%= link_to 'Show', tenant  %>
+                      <%= link_to  "Edit", edit_tenant_path(tenant) %>
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+  <% end %>
+  
+</table>
