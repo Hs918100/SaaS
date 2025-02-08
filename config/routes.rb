@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   resources :tenants, only: [:index, :show, :create, :new, :update, :edit, :destroy]
   get 'my/tenants', to: 'tenants#my', as: 'my_tenants' 
 
+
   resources :members
+  get 'invite/member', to: 'members#invite', as: 'invite_members'
 
 end

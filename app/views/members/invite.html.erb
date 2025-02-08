@@ -1,0 +1,29 @@
+<section class="vh-100 mt-1">
+  <div class="container py-5 h-100">
+    <div class="row d-flex align-items-center justify-content-center h-100 ">
+
+      <div class="col-md-8 col-lg-7 col-xl-6">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+          class="img-fluid" alt="Phone image">
+      </div>
+      <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+
+      <h2>Invite a User</h2>
+
+    <%= form_tag invite_members_path, method: :get do %>
+
+        <div data-mdb-input-init class="form-outline mb-4">
+            <%= email_field_tag :email, nil, autofocus: true, autocomplete: "email", id: "form1Example13", class: "form-control form-control-lg" %>
+        </div>
+
+        <div class="actions mt-2">
+            <%= submit_tag "Invite", class: "btn btn-primary btn-lg btn-block" %>
+        </div>
+
+    <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+
+

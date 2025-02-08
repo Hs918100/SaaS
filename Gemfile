@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 ruby "3.3.1"
-
+gem 'byebug'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.5"
 
@@ -69,3 +69,4 @@ end
 gem 'devise'
 gem 'simple_form'
 gem "pg", "~> 1.1"
+gem 'devise_invitable', '~> 2.0.0'

@@ -1,9 +1,31 @@
+require 'byebug'
 class MembersController < ApplicationController
   before_action :set_member, only: %i[ show edit update destroy ]
 
   # GET /members or /members.json
   def index
     @members = Member.all
+  end
+
+  def invite
+    current_tenant = Tenant.first
+    email = params[:email]
+    if email && !email.empty?
+      user_from_email = User.where(email: email).first
+      if user_from_email.present?
+        if Member.where(user: user_from_email, tenant: current_tenant).any?
+          redirect_to members_path, alert: "The Organisation #{current_tenant.name} already has a User with the email #{email}"
+        else
+          Member.create!(user: user_from_email, tenant: current_tenant)
+          redirect_to mrembers_path, notice: "#{email} was Invited to Join the organisation #{current_tenant.name}"
+        end
+      elsif user_from_email.nil? #invite new user to a tenat
+        new_user = User.invite!(email: email) #devise_invitable
+        Member.create!(user: new_user, tenant: current_tenant)
+        redirect_to members_path, notice: "#{email} was Invited to Join the Tenant #{current_tenant.name}"
+      end
+    end
+     
   end
 
   # GET /members/1 or /members/1.json
